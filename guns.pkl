@@ -1,0 +1,13 @@
+module guns
+
+abstract class Gun {
+  type: String
+}
+
+class HttpGun extends Gun {
+  type = "http"
+  target: String
+}
+
+function http(_target: String): HttpGun = new HttpGun { target = _target }
+

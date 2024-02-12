@@ -1,0 +1,23 @@
+module schedule
+
+abstract class Schedule {
+  type: String
+}
+
+class Once extends Schedule {
+  type = "once"
+  times: Int
+}
+
+class Const extends Schedule {
+  type = "const"
+  ops: Int
+  duration: Duration
+}
+
+function once(_times: Int): Once = new Once { times = _times }
+function _const(_ops: Int, _duration: Duration): Const = new Const { 
+ops = _ops
+duration = _duration
+}
+

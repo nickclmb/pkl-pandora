@@ -1,0 +1,12 @@
+module ammo
+
+abstract class Ammo {
+  type: String
+}
+
+class UriAmmo extends Ammo {
+  type = "uri"
+  file: String
+}
+
+function uri(_file: String): UriAmmo = new UriAmmo { file=_file }

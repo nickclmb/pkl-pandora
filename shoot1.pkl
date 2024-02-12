@@ -1,0 +1,21 @@
+amends "pandora_shoot.pkl"
+
+import "ammos.pkl"
+import "guns.pkl"
+import "schedule.pkl"
+
+
+pools = new Listing<Pool> {
+  new {
+    id = "HTTP1"
+    ammo = ammos.uri("uri.ammo")
+    gun = guns.http("ya.ru:443")
+    startup = schedule.once(1000)
+    rps {
+      schedule._const(10, 5.min)
+    }
+  }
+}
+
+log = null
+monitoring = null

@@ -1,0 +1,42 @@
+module PandoraShoot
+import "guns.pkl"
+import "ammos.pkl"
+import "schedule.pkl"
+
+class Result {
+  type: String = "phout"
+  destination: String = "phout.log"
+}
+
+class Pool {
+  id: String
+  gun: guns.Gun
+  ammo: ammos.Ammo
+  result: Result
+  rps: Listing<schedule.Schedule>
+  startup: schedule.Schedule
+}
+
+class Log {
+  level: String
+}
+
+class Monitoring {
+
+}
+
+
+
+pools: Listing<Pool>
+log: Log?
+monitoring: Monitoring?
+
+
+
+output {
+  renderer = new YamlRenderer {
+    converters {
+      [Duration] = (dur) -> "\(dur.value)\(dur.unit)"
+    }
+  }
+}
